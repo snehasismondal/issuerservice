@@ -1,0 +1,36 @@
+server:
+  port: 2000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+  instance:
+    appname: issuerservice
+logging:
+  file:
+    name: ..\..\Logs\issuerservice.log
+
+bookservice:
+  instance: bookservice
+  loadbalancer:
+    instance: booksloadbalancer
+issuer:
+  instance: ISSUERSERVICE
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+  activemq:
+    broker-url: tcp://localhost:61616
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookstore
+    username: root
+    password: MYSQL
+    maximum-pool-size: 30
+  jpa:
+    show-sql : true
+  zipkin:
+    baseurl: http://localhost:9411
+ORDER_EVENT_QUEUE: 
+  name: orderevent
+
